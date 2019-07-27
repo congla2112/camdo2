@@ -38,10 +38,10 @@ public class EmployeeController {
 
 	@GetMapping("/employee/{id}")
 	public Employee getEmpId(@PathVariable(value = "id") String empId) {
-		return employeeRepository.findById(empId).orElseThrow(() -> new poly.com.exception.ResourceNotFoundException("Employee", "id", empId));
+		return employeeRepository.findById(empId).orElseThrow(() -> new ResourceNotFoundException("Employee", "id", empId));
 	}
 	
-	@PutMapping("employee/{id}")
+	@PutMapping("/employee/{id}")
 	public Employee updateEmp(@PathVariable(value="id")String empId, @Valid @RequestBody Employee empDetails) {
 		Employee employee = employeeRepository.findById(empId).orElseThrow(()->new ResourceNotFoundException("Employee","id",empId));
 		
